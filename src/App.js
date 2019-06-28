@@ -3,16 +3,6 @@ import { Query, compose, graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
 const ALL_PEOPLE = gql`
-    query AllPeople {
-        people {
-            id
-            name
-            age
-        }
-    }
-`;
-
-const ALL_PEOPLE_CLIENT = gql`
     query {
         people {
             id
@@ -21,21 +11,6 @@ const ALL_PEOPLE_CLIENT = gql`
         }
     }
 `;
-
-const Foo = () => {
-    return (
-        <Query query={ALL_PEOPLE_CLIENT}>
-            {({ loading, data }) => {
-                console.log(data);
-                if (loading) {
-                    return <p>Loading</p>;
-                }
-                const { people } = data;
-                return <ul>{!people ? 'foo' : people.map(person => <li key={person.id}>{person.name}</li>)}</ul>;
-            }}
-        </Query>
-    );
-};
 
 const App = props => {
     const { loading, data } = props;
@@ -62,7 +37,6 @@ const App = props => {
                 people with names and ids.
             </p>
             <ul>{!people ? 'Foo' : people.map(person => <li key={person.id}>{person.name}</li>)}</ul>
-            <Foo />
         </main>
     );
 };

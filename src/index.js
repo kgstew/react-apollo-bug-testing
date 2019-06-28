@@ -14,10 +14,10 @@ const client = new ApolloClient({
     link,
     resolvers: {
         Person: {
-            age: () => {
-                console.log('foop');
-                return '7';
-            }
+            // age: () => {
+            //     console.log('foop');
+            //     return '7';
+            // }
         }
     }
 });
